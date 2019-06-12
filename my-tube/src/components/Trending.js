@@ -6,13 +6,16 @@ import {stateMapper} from '../store/store.js'
 
 
 class TrendingComponent extends React.Component{
-    componentDidMount(){
+    componentDidMount(){    
         store.dispatch({
             type : 'fetch_videos',
             videoType : 'trending'
-
+        });
+    }
+    componentWillMount(){
+        store.dispatch({
+            type : 'clear_videos',
         })
-    
     }
     render(){
         return(

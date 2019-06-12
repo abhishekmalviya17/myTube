@@ -10,6 +10,9 @@ class VideoPlayerComponent extends React.Component{
            type : 'fetch_video_data',
            videoId : this.props.match.params.videoId
        })
+       store.subscribe(function(){
+           console.log('naya stote hai ye',store.getState());
+       })
    }
 
    renderTitle(){
@@ -28,7 +31,24 @@ class VideoPlayerComponent extends React.Component{
                 <h2 className='text-danger'>{this.renderTitle()}</h2>
                 <hr></hr>
                 <div className="embed-responsive embed-responsive-16by9">
-                    <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/watch?v=${this.props.match.params.videoId}`} allowFullScreen></iframe>
+                    <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.props.match.params.videoId}`} allowFullScreen></iframe>
+                </div>
+
+                <div className='row'>
+                    <div className='col-md-12'>
+                        <h2>Views : {this.props.currentPlayerVideo.statistics && 
+                        this.props.currentPlayerVideo.statistics.viewCount},
+                           Likes : {this.props.currentPlayerVideo.statistics && 
+                        this.props.currentPlayerVideo.statistics.likeCount},
+                        Dislikes : {this.props.currentPlayerVideo.statistics && 
+                        this.props.currentPlayerVideo.statistics.dislikeCount} </h2>
+                    </div>
+                </div>
+
+                <div className='row'>
+                    <div className='col-md-8'>
+                        {this.props.currentPlayerVideo.snippet && this.props.currentPlayerVideo.snippet.description}
+                    </div>
                 </div>
             </div>
         )
