@@ -28,7 +28,7 @@ class VideoPlayerComponent extends React.Component{
                 <h2 className='text-danger'>{this.renderTitle()}</h2>
                 <hr></hr>
                 <div className="embed-responsive embed-responsive-16by9">
-                    <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/watch?v=${this.props.match.params.videoId}?rel=0`} allowFullScreen></iframe>
+                    <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/watch?v=${this.props.match.params.videoId}`} allowFullScreen></iframe>
                 </div>
             </div>
         )
