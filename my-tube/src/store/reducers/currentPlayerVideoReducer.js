@@ -9,7 +9,9 @@ function currentPlayerVideoReducer(currentPlayerVideo={},action){
         fetchOneVideo(store,action);
     }
     if(action.type==='video_data_loaded'){
-        return action.videos;
+        let newAction=action.videos;
+        newAction.snippet.shortDescription = action.videos.snippet.description.slice(0,100);
+        return newAction;
     }
     return currentPlayerVideo;
 }

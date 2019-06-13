@@ -1,10 +1,12 @@
 import {createStore , combineReducers} from 'redux';
 import videoReducer from './reducers/videoReducer.js';
-import currentPlayerVideoReducer from './reducers/currentPlayerVideoReducer.js'
+import currentPlayerVideoReducer from './reducers/currentPlayerVideoReducer.js';
+import currentVideoCommentsReducer from './reducers/currentVideoCommentsReducer.js';
 
 let reducer=combineReducers({
     videos : videoReducer,
-    currentPlayerVideo : currentPlayerVideoReducer
+    currentPlayerVideo : currentPlayerVideoReducer,
+    currentVideoComments : currentVideoCommentsReducer
 
 })
 
