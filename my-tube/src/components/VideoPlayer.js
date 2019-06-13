@@ -66,7 +66,6 @@ class VideoPlayerComponent extends React.Component{
    }
 
     render(){
-        console.log(this.props.match.params.videoId);
         return(
             <div>
                 

@@ -17,7 +17,7 @@ class VideoComponent extends React.Component{
             if(typeof videoId != 'string'){
                 videoId=v.id.videoId
             }
-            let url=`/VideoPlayer/${videoId}`
+            let url=`/app/VideoPlayer/${videoId}`
             return(
                 <div key={v.etag} className='col-md-4'>
                    
