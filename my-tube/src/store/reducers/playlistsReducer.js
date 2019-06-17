@@ -7,6 +7,10 @@ function playlistsReducer(playlists=[],action){
     if(action.type==='fetch_playlists'){
         fetchPlaylists(store,action);
     }
+    if(action.type==='playlist_created'){
+        fetchPlaylists(store,action);
+        
+    }
     if(action.type==='playlists_loaded'){
        playlists=action.playlists;
        return action.playlists

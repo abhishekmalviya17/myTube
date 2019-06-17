@@ -1,6 +1,11 @@
 import React from 'react';
+import {store} from '../store/store.js'
+import {connect} from 'react-redux';
+import {stateMapper} from '../store/store';
+import {Redirect} from 'react-router-dom';
 
-class CreatePlaylist extends React.Component{
+
+class CreatePlaylistComponent extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -28,7 +33,12 @@ class CreatePlaylist extends React.Component{
 
     handleSubmit(event){
         event.preventDefault();
-        this.validateForm();
+
+        console.log(this.state)
+        store.dispatch({
+            type : 'create_playlist',
+            formData : this.state
+        })
     }
     
     validateForm(){
@@ -57,7 +67,15 @@ class CreatePlaylist extends React.Component{
         }
     
 }
+    componentWillUnmount(){
+        store.dispatch({
+            type : 'clear_playlist_created'
+        })
+    }
     render(){
+            if(this.props.newPlaylist.id){
+                return <Redirect to={`/app/playlist/${this.props.newPlaylist.id}`}/>
+            }
         return(
             <div>
                 <h2 className='text-info'>Create new playlist</h2>
@@ -99,10 +117,12 @@ class CreatePlaylist extends React.Component{
                             </textarea>
                         </label>
                     </div>
-                    <button className='btn btn-info' onClick={this.handleSubmit}>Create Playlist</button>
+                    <button type='submit' className='btn btn-info' onClick={this.handleSubmit}>Create Playlist</button>
                 </form>
             </div>
         )
     }
 }
+
+let CreatePlaylist = connect (stateMapper)(CreatePlaylistComponent);
 export default CreatePlaylist;

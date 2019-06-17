@@ -2,12 +2,14 @@ import {createStore , combineReducers} from 'redux';
 import videoReducer from './reducers/videoReducer.js';
 import currentPlayerVideoReducer from './reducers/currentPlayerVideoReducer.js';
 import currentVideoCommentsReducer from './reducers/currentVideoCommentsReducer.js';
-import playlistsReducer from './reducers/playlistsReducer.js'
+import playlistsReducer from './reducers/playlistsReducer.js';
+import newPlaylistReducer from './reducers/newPlaylistReducer';
 let reducer=combineReducers({
     videos : videoReducer,
     currentPlayerVideo : currentPlayerVideoReducer,
     currentVideoComments : currentVideoCommentsReducer,
-    playlists     :  playlistsReducer
+    playlists     :  playlistsReducer,
+    newPlaylist   : newPlaylistReducer
 
 })
 
